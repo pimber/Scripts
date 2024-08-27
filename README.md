@@ -20,7 +20,7 @@ To make sure you can alt+tab
 4. set this value to false
 
 To enable animation effects
-1. Go into settings
+1. Go into windows settings
 2. Animations effects
 3. enable effects
 
