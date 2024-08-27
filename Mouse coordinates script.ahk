@@ -3,6 +3,7 @@
 #Warn                       ; Enable warnings to assist with detecting common errors.
 SendMode Input              ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
+
 Gui, +AlwaysOnTop
 Gui, Font, s32 q3, Arial
 Gui, Add, Text, vCoordText c00FF00, XXXXX YYYYY
