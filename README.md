@@ -12,11 +12,14 @@ The paragon script is commented, so that it should be fairly easy to follow and 
 
 ### IMPORTANT
 You need to make sure that you can alt+tab without minecraft pause the game and that windows has enabled animation as we need the sound animation in volumne mixer.
+
+To make sure you can alt+tab
 1. Go into %appdata%.minecraft
 2. find the file options.txtopen in any text editor
 3. find the line: pause_on_lost_focus
 4. set this value to false
 
+To enable animation effects
 1. Go into settings
 2. Animations effects
 3. enable effects
