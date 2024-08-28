@@ -112,7 +112,7 @@ Monkey(){
     PlaceMonkey("R", 1286, 78, 2, 0, 4)
     PlaceMonkey("R", 1362, 78, 4, 0, 2)
     PlaceMonkey("R", 1465, 195, 3, 0, 2)
-    PlaceMonkey("R", 1465, 252, 0, 0, 0)
+    PlaceMonkey("R", 1465, 252, 0, 0, 1)
 
     MouseClick, left, 1830, 1010
     Sleep, 500
