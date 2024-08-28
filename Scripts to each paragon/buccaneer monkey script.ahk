@@ -28,9 +28,9 @@ StartDeflation(){
     ; MouseClick , left, x, y
 
     ; MouseClick to map here on this line
-    ToPage(8)
+    ToPage(2)
     Sleep, 1000
-    MouseClick, left, 950, 560  ; Spice Island map
+    MouseClick, left, 540, 580 ; resort
     Sleep, 1000
     MouseClick, left, 630, 400 ; Picking easy mode
     Sleep, 1000
@@ -106,7 +106,10 @@ PlaceMonkey(monkey_type, x, y, one, two, three){
 Monkey(){
     Sleep, 500
 
-    
+    PlaceMonkey("c", 1120, 230, 4, 2, 0)
+    PlaceMonkey("c", 1120, 390, 0, 3, 2)
+    PlaceMonkey("c", 1120, 310, 3, 2, 0)
+    PlaceMonkey("c", 1030, 330, 0, 2, 2)
 
     MouseClick, left, 1830, 1010
     Sleep, 500
