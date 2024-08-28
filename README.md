@@ -10,7 +10,7 @@ The paragon script is commented, so that it should be fairly easy to follow and 
 
 ## Scripts for Minecraft
 
-### IMPORTANT
+### IMPORTANT for autofishing
 You need to make sure that you can alt+tab without minecraft pause the game and that windows has enabled animation as we need the sound animation in volumne mixer.
 
 To make sure you can alt+tab
@@ -24,5 +24,5 @@ To enable animation effects
 2. Animations effects
 3. enable effects
 
-These scripts are fairly simple and were created to AFK mine on a cobble generator, slaying mobs at a mob farm and automatically catching fish. All on a sky block server (Can proberly also be used in single player and other scenarios)
+The 3 other scripts are fairly simple and were created to AFK mine on a cobble generator, slaying mobs at a mob farm and automatically catching fish. All on a sky block server (Can proberly also be used in single player and other scenarios)
 The scripts have comments so that it should be easy to understand and how to use the toggle.
