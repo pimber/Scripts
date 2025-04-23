@@ -3,9 +3,9 @@
 SendMode Input              ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 
-; This function is used go x times to the right on the map selection menu
-ToPage(number_of_times) {
-    Loop, % (number_of_times - 1)
+; This function is used go flip to x page.
+ToPage(page_number) {
+    Loop, % (page_number - 1)
     {
         Sleep, 500
         MouseClick, left, 1640, 430
@@ -13,28 +13,35 @@ ToPage(number_of_times) {
     }
 }
 
+; This function is used to pick which map to use. The map layout follows like this
+; 1 2 3
+; 4 5 6
+PickMap(map_number) {
+    if (map_number = 1)
+        MouseClick, left, 540, 270
+    else if (map_number = 2)
+        MouseClick, left, 965, 270
+    else if (map_number = 3)
+        MouseClick, left, 1390, 270
+    else if (map_number = 4)
+        MouseClick, left, 540, 590
+    else if (map_number = 5)
+        MouseClick, left, 965, 590
+    else if (map_number = 6)
+        MouseClick, left, 1390, 590
+}
+
 ; This function is responsible for starting the deflation mode
 StartDeflation(){
     Sleep, 1000
-    MouseClick, left, 830, 930 ; Pressing the play btn
+    MouseClick, left, 950, 950 ; Pressing the play btn
     Sleep, 1000
-
-    ; As im a bit lasy, i have used the same two maps to farm xp for all of the paragons.
-    ; If you want to pick another map?
-    ; You would need to open the mouse position script locate the x,y coordinates of the map and note it as you see below with meadow and park path.
-    ; If the map is not on the first page, you need to use the GoLeft or GoRight function.
-    ; Ex: If the map is on the 6th page it should looke like this
-    ; GoRight(6),  Flips to page 6
-    ; MouseClick , left, x, y
-
-    ToPage(3)
-    Sleep, 1000
-    MouseClick, left, 550, 565  ; Park Path map
+    PickMap(1) ; Meadow
     Sleep, 1000
     MouseClick, left, 630, 400 ; Picking easy mode
     Sleep, 1000
     MouseClick, left, 1285, 450 ; Picking deflation mode
-    Sleep, 5000
+    Sleep, 6000
     MouseClick, left, 960, 760 ; Press OK
     Sleep, 1000
 }
@@ -45,7 +52,7 @@ StartNextRound(){
     MouseClick, left, 960, 910
     Sleep, 750
     MouseClick, left, 700, 850
-    Sleep, 5000
+    Sleep, 6000
 }
 
 ; This function takes in the shortcut for the monkey. Ex shortcut for a monkey could be "x".
@@ -83,7 +90,7 @@ UpgradeMonkey(x, y, one, two, three){
         k = 0
         while k < three {
             Sleep, 500
-            Send, / ; Depending on which keyboard update btn
+            Send, / ; Depending on which keyboard layout update button
             k++
         }
     }
@@ -105,13 +112,13 @@ PlaceMonkey(monkey_type, x, y, one, two, three){
 Monkey(){
     Sleep, 500
 
-    PlaceMonkey("v", 1500, 625, 3, 0, 2)
-    PlaceMonkey("v", 1500, 710, 3, 0, 2)
-    PlaceMonkey("v", 1500, 795, 3, 0, 2)
-    PlaceMonkey("v", 1348, 625, 3, 0, 2)
-    PlaceMonkey("v", 1348, 710, 0, 3, 2)
-    PlaceMonkey("v", 1348, 795, 0, 3, 2)
-    PlaceMonkey("v", 1045, 360, 1, 1, 2)
+    PlaceMonkey("W", 490, 510, 0, 1, 4)
+    PlaceMonkey("Q", 625, 400, 0, 2, 4)
+    PlaceMonkey("W", 625, 510, 3, 0, 2)
+    PlaceMonkey("W", 700, 400, 2, 3, 0)
+    PlaceMonkey("W", 705, 510, 2, 3, 0)
+    PlaceMonkey("W", 790, 510, 0, 2, 4)
+    PlaceMonkey("Q", 920, 460, 4, 0, 2)
 
     MouseClick, left, 1830, 1010
     Sleep, 500
@@ -119,15 +126,15 @@ Monkey(){
     Sleep, 500
 }
 
-; This function has a timer set to 8 min (Which should be more than enough for all of the paragon scripts)
+; This function has a timer set to 7 min (Which should be more than enough for all of the paragon scripts)
 ; Where it click on two places on the scrren to handle the lvl pop ups
 WaitXMin(minutes_in_ms){
     StartTime := A_TickCount
     Loop {
         Sleep, 500
-        MouseClick, left, 250, 400 ; You can adjust the position of the mouse click here
+        MouseClick, left, 900, 1050 ; You can adjust the position of the mouse click here
         Sleep, 500
-        MouseClick, left, 250, 450 ; and here
+        MouseClick, left, 920, 1050 ; and here
     } Until A_TickCount - StartTime > minutes_in_ms
 }
 
@@ -136,7 +143,7 @@ StartMonkeyXPFarm(){
         while True {
             StartDeflation()
             Monkey()
-            WaitXMin(360000) ; Depending on the performance on the PC, change the time between 6-7 min
+            WaitXMin(420000) ; Based on your hardware you can set it to a lower time
             StartNextRound()
         }
 }
@@ -149,3 +156,6 @@ if WinActive("BloonsTD6"){
 
 ; The script can pauses pressing ctrl + p, if anything happens
 ^p:: Pause
+
+; The script can be exited pressing ctrl + e, if anything happens
+^e::ExitApp
