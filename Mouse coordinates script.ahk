@@ -19,6 +19,3 @@ Update(){
     MouseGetPos, mouseX, mouseY
     GuiControl,, CoordText, %mouseX%, %mouseY%
 }
-
-; Make the GUI always stay on top even in full-screen games
-DllCall("SetWindowPos", "UInt", WinExist(), "UInt", -1, "Int", 0, "Int", 0, "Int", 0, "Int", 0, "UInt", 0x0001 | 0x0002)
